@@ -6,16 +6,12 @@ public class GameLogic : MonoBehaviour
         
 }
 //Making a dice
-        public class Dice
-        {
-            Random dice;
-            public Dice()
-            {
-                dice = new Random();
-            }
-            //The function to roll the dice
-            public int DiceSpacesToMove()
-            {
-                return dice.Next(1,7);
-            }
-        }
+public class DiceRoller
+{
+
+    void RollDice()
+    {
+        int diceRoll = Random.Range(1, 7); // Random number between 1 and 6
+        Debug.Log("You rolled a " + diceRoll);
+    }
+}
