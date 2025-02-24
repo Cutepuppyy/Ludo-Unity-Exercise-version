@@ -5,19 +5,46 @@ using static GameLogic;
 
 public class Player : MonoBehaviour
 {
-    //Inputting variables the pæayer should have
-    public int[] TurnOrder = new int[4];
-    public int PiecesHome = 4;
-    public int PiecesMoving = 0;
-    public int PiecesGoal = 0;
-    public GamePiece[] Pieces = new GamePiece[4];
-    // A Constructor for the player
+    GamePiece[] pieces = new GamePiece[4];
     public Player()
     {
-        //Creating the pieces when the players are made
-        for (int PieceNumber = 0; PieceNumber < Pieces.Length; PieceNumber++)
+        for (int i = 0; i < pieces.Length; i++)
         {
-            Pieces[PieceNumber] = new GamePiece();
+            pieces[i] = new GamePiece();
         }
+    }
+    public bool DecideAndMovePiece(int rollValue)
+    {
+        if (rollValue == 6)
+        {
+            for (int i = 0; i < pieces.Length; i++)
+            {
+                if (pieces[i].Position == 0)
+                {
+                    pieces[i].Move(1);
+                    return false;
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < pieces.Length; i++)
+            {
+                if (pieces[i].Position + rollValue <= 40)
+                {
+                    pieces[i].Move(rollValue);
+                    return false;
+                }
+            }
+        }
+        for (int i = 0; i < pieces.Length; i++)
+        {
+            if (pieces[i].Position < 40)
+            {
+                pieces[i].Move(rollValue);
+                return false;
+            }
+        }
+        return true;
     }
 }
