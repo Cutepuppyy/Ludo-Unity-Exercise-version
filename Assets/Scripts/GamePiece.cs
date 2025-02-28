@@ -4,13 +4,14 @@ using static Player;
 
 public class GamePiece : MonoBehaviour
 {
-    private int position = 0;
+    private float position = 0;
 
-    public int Position { get => position; }
+    public float Position { get => position; }
 
     public void Move(int x)
     {
         position += x;
+        gameObject.transform.position = new Vector3(position,gameObject.transform.position.y,gameObject.transform.position.z);
     }
 
 }

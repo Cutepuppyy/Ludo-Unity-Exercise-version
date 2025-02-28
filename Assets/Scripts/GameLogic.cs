@@ -7,7 +7,7 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class GameLogic : MonoBehaviour
 {
-    void PlayGame()
+    public void PlayGame()
     {
         Player[] players = new Player[4];
         for (int i = 0; i < players.Length; i++)
@@ -26,7 +26,7 @@ public class GameLogic : MonoBehaviour
                     winnerFound = i;
                     break;
                 }
-                WaitForSeconds(0.25);
+                WaitForSeconds025();
             }
         }
         Console.WriteLine("winner is player " + winnerFound);
@@ -37,6 +37,16 @@ public class GameLogic : MonoBehaviour
             Debug.Log("You rolled a " + diceRoll);
             return diceRoll;
         }
+    }
+    private void Start()
+    {
+        StartCoroutine(WaitForSeconds025());
+        PlayGame();
+    }
+
+    IEnumerator WaitForSeconds025()
+    {
+        yield return new WaitForSeconds(0.2f);
     }
 }
 
