@@ -26,13 +26,14 @@ public class GameLogic : MonoBehaviour
                     winnerFound = i;
                     break;
                 }
+                WaitForSeconds(0.25);
             }
         }
         Console.WriteLine("winner is player " + winnerFound);
 
         int RollDice()
         {
-            int diceRoll = System.Random(1, 7); // Random number between 1 and 6
+            int diceRoll = UnityEngine.Random.Range(1, 7); // Random number between 1 and 6
             Debug.Log("You rolled a " + diceRoll);
             return diceRoll;
         }
